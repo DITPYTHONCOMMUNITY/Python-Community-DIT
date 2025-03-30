@@ -1,0 +1,76 @@
+
+    {% load static %}
+    <!-- Modal -->
+    <dialog id="register" class="modal">
+        <div class="modal-box w-11/12 max-w-5xl p-0">
+            <div class="bg-white drop-shadow-xl border border-black/20 w-full rounded-md flex justify-between items-stretch px-5 xl:px-5 py-5">
+                <!-- Image Section (Hidden on Mobile) -->
+                <div class="sm:w-[60%] lg:w-[50%] bg-cover bg-center items-center justify-center hidden md:flex">
+                    <img src="{% static "images/cards/register.jpg" %}" alt="join us" class="h-[500px]">
+                </div>
+                
+                <!-- Form Section -->
+                <div class="mx-auto w-full lg:w-1/2 md:p-10 py-5 md:py-0">
+                    <h1 class="text-center text-2xl sm:text-3xl font-bold">We're Happy To Have You</h1>
+                    <div class="w-full mt-5 sm:mt-8">
+                        <form method="dialog" class="mx-auto w-full sm:max-w-md md:max-w-lg flex flex-col gap-5">
+                            <!-- First Name -->
+                         
+                                <input 
+                                    type="text" 
+                                    placeholder="Enter Your First Name" 
+                                    class="input rounded-full w-full text-black placeholder:text-black/70"
+                                >
+                               
+                          
+                            <!-- Last Name -->
+                              <input 
+                                    type="text" 
+                                    placeholder="Enter Your Last Name" 
+                                    class="input rounded-full w-full text-black placeholder:text-black/70"
+                                >
+
+                            <!-- Email -->
+                            <input 
+                                type="text" 
+                                placeholder="Enter Your Email" 
+                                class="input rounded-full w-full text-black placeholder:text-black/70"
+                            >
+
+                            <!-- Phone Number -->
+                            <input 
+                                type="text" 
+                                placeholder="Enter Your Phone No" 
+                                class="input rounded-full w-full text-black placeholder:text-black/70"
+                            >
+
+                            <!-- Terms Checkbox -->
+                            {% comment %} <div class="flex items-center gap-1.5 justify-start pl-2">
+                                <div class="form-control">
+                                    <label class="label cursor-pointer">
+                                        <input type="checkbox" class="checkbox-xs checkbox-primary">
+                                    </label>
+                                </div>
+                                <h3 class="flex items-center whitespace-nowrap text-xs text-black">
+                                    I agree to the 
+                                    <span class="text-[#4A07DA]"> Terms</span> 
+                                    and 
+                                    <span class="text-[#4A07DA]"> Privacy Policy</span>.
+                                </h3>
+                            </div> {% endcomment %}
+
+                            <!-- Buttons -->
+                            <div class="flex flex-col md:flex-row gap-2 md:gap-4 justify-center items-center">
+                                <button class="btn btn-active btn-ghost btn-block rounded-full max-w-[200px]">Submit</button>
+                                <button class="btn btn-ghost btn-block rounded-full max-w-[200px]">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Close Button -->
+            <form method="dialog" class="modal-backdrop">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+        </div>
+    </dialog>

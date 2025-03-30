@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block content %}
+    <!-- Hero Section -->
+    <section class="container mx-auto py-12 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-2">
+                <div class="min-h-[30vh] flex items-center justify-center">
+                    <h1 class="text-5xl md:text-6xl font-bold text-center">DIT PYTHON COMMUNITY</h1>
+                </div>
+                <!-- Combined PyCon and DjangoGirls Card -->
+                <div class="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <div class="card-body flex flex-col lg:flex-row">
+                        <!-- PyCon Community -->
+                        <div class="flex-1 flex flex-col items-center text-center lg:border-r lg:border-gray-200">
+                            <div class="avatar mb-4">
+                                <div class="w-24 rounded-full">
+                                    <img src="{% static 'images/logo/python-logo.png' %}" alt="PyCon Avatar" />
+                                </div>
+                            </div>
+                            <span class="mb-2">Python</span>
+                            <h3 class="card-title text-xl font-semibold mb-2">Join the Python (DIT) Community</h3>
+                            <p class="mb-4">
+                                A group of students who are passionate about Python programming language.
+                                We host workshops, talks, and other events to help students learn and grow in Python.
+                            </p>
+                            <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center mb-4">
+                                <img src="{% static 'images/social/youtube.png' %}"
+                                     class="w-4 h-4"
+                                     alt="YouTube Icon" />
+                            </div>
+                        </div>
+                        <!-- Divider -->
+                        <div class="divider lg:divider-horizontal"></div>
+                        <!-- DjangoGirls Community -->
+                        <div class="flex-1 flex flex-col items-center text-center">
+                            <div class="avatar mb-4">
+                                <div class="w-24 rounded-full">
+                                    <img src="{% static 'images/cards/djang0-girls-1.jpg' %}"
+                                         alt="DjangoGirls Avatar"
+                                         class="w-full h-full object-cover rounded-full" />
+                                </div>
+                            </div>
+                            <span class="mb-2">DjangoGirls</span>
+                            <h3 class="card-title text-xl font-semibold mb-2">Join the DjangoGirls (DIT) Community</h3>
+                            <p class="mb-4">
+                                Dedicated to empowering women by introducing them to the world of programming and web development.
+                                <br>
+                                We aim to create a supportive environment where participants can learn, grow, and build confidence in their technical skills.
+                            </p>
+                            <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center mb-4">
+                                <img src="{% static 'images/social/youtube.png' %}"
+                                     class="w-4 h-4"
+                                     alt="YouTube Icon" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Branding Card -->
+            <div class="card bg-base-200 shadow-xl flex items-center justify-center">
+                <img src="{% static 'images/cards/djang0-girls-1.jpg' %}"
+                     alt="DIT Python Community Logo"
+                     class="w-full h-full object-cover rounded-xl filter grayscale hover:filter-none transition duration-300" />
+            </div>
+        </div>
+    </section>
+    <!-- What to Expect Section -->
+    <section class="container mx-auto py-12 px-4">
+        <div class="grid grid-cols-12 gap-8">
+            <!-- Left Column -->
+            <div class="col-span-12 md:col-span-4 flex flex-col">
+                <h2 class="text-xl md:text-3xl font-bold mb-4">WHAT SHOULD YOU EXPECT FROM THE CHAPTER?</h2>
+                <p class="text-gray-600">
+                    The chapter organizes talks which will be performed for both Python and DjangoGirls. By joining the DIT Python Community, you’ll gain access to a vibrant network of learners, mentors, and professionals passionate about Python and web development. Whether you’re a beginner looking to write your first line of code or an experienced developer aiming to refine your skills, our community offers a range of opportunities to grow, collaborate, and succeed.
+                    As a member, you’ll benefit from hands-on workshops that break down complex concepts into practical skills, connect with like-minded peers to work on real-world projects, and hear from industry experts through our curated talks.
+                </p>
+            </div>
+            <!-- Right Column -->
+            <div class="col-span-12 md:col-span-8 flex flex-col gap-2">
+                <!-- Workshop -->
+                <div class="card card-side bg-base-100 shadow-sm items-center flex flex-col md:flex-row">
+                    <figure class="w-full p-2">
+                        <img src="{% static 'images/cards/workshop.jpg' %}"
+                             alt="Workshop"
+                             class="rounded-lg object-cover filter grayscale hover:filter-none transition duration-300" />
+                    </figure>
+                    <div class="card-body p-4 items-center text-center md:text-left">
+                        <h3 class="card-title">WORKSHOP</h3>
+                        <p class="text-gray-600">
+                            Here is a description of how PyCon workshops are conducted, what is to be expected when one attends and how frequent they are conducted in an academic year.
+                        </p>
+                    </div>
+                </div>
+                <div class="divider m-0"></div>
+                <!-- Talk -->
+                <div class="card card-side bg-base-100 shadow-sm items-center flex flex-col md:flex-row">
+                    <figure class="w-full p-2">
+                        <img src="{% static 'images/cards/talk.jpg' %}"
+                             alt="Talk"
+                             class="rounded-lg object-cover filter grayscale hover:filter-none transition duration-300" />
+                    </figure>
+                    <div class="card-body p-4 items-center text-center md:text-left">
+                        <h3 class="card-title">TALK</h3>
+                        <p class="text-gray-600">
+                            Here is a description of how PyCon talks are conducted, what is to be expected when one attends and how frequent they are conducted in an academic year.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Image Gallery Section -->
+    <section class="container mx-auto py-12 px-4">
+        <div class="">
+            <div class="swiper events-swiper">
+                <div class="swiper-wrapper">
+                    {% for img in page.swiper_images %}
+                        <div class="swiper-slide">
+                            {% image img.value.image fill-400x500 class="w-full h-64 object-cover" alt="{{ img.value.caption|default:img.value.image.title }}" %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial Section (Swiper) -->
+    {% if page.testimonials %}
+        <section class="container mx-auto py-12 px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">WHAT OUR MEMBERS SAY</h2>
+            <div class="swiper testimonial-swiper relative">
+                <div class="swiper-wrapper">
+                    {% for testimonial in page.testimonials %}
+                        <div class="swiper-slide">
+                            <div class="bg-base-200 p-6 rounded-lg min-h-[30vh] flex flex-col justify-center">
+                                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                                    <!-- Text on Left -->
+                                    <div class="md:w-2/3 text-left">
+                                        <p class="text-lg italic text-gray-600">"{{ testimonial.value.text }}"</p>
+                                    </div>
+                                    <!-- Image on Right -->
+                                    <div class="md:w-1/3 flex justify-center">
+                                        <div class="avatar">
+                                            <div class="w-32 rounded-full bg-gray-200 flex items-center justify-center">
+                                                {% image testimonial.value.image fill-128x128 alt="{{ testimonial.value.name }} Avatar" %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Name and Role Below -->
+                                <div class="text-center md:text-left mt-4">
+                                    <p class="font-semibold">{{ testimonial.value.name }}</p>
+                                    <p class="text-gray-500">{{ testimonial.value.role|default:"DIT Python Community Member" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="btn btn-circle absolute left-4 top-1/2 -translate-y-1/2 z-10">❮</div>
+                <div class="btn btn-circle absolute right-4 top-1/2 -translate-y-1/2 z-10">❯</div>
+            </div>
+        </section>
+    {% endif %}
+    <!-- Team Section -->
+    <!-- Stats Section -->
+    <section class="container mx-auto py-12 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="stat">
+                <div class="stat-value">140+</div>
+                <div class="stat-title">Student Members</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">30+</div>
+                <div class="stat-title">Alumni Members</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">5</div>
+                <div class="stat-title">Facilitators</div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

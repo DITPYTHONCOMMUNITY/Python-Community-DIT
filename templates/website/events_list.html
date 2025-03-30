@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load static %}
+
+{% block extra_head %}
+    <script type="module" src="https://unpkg.com/cally"></script>
+{% endblock extra_head %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="container mx-auto py-12 px-4">
+        <div class="hero min-h-[50vh] bg-base-200">
+            <div class="hero-content flex-col md:flex-row">
+                <div class="md:w-1/2">
+                    <div class="bg-gray-200 h-64 flex items-center justify-center rounded-lg">
+                        <p class="text-gray-500">[PyCon’s branding Placeholder]</p>
+                    </div>
+                    <div class="bg-gray-200 h-32 flex items-center justify-center mt-4 rounded-lg">
+                        <p class="text-gray-500">[University’s branding Placeholder]</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 text-center flex flex-col items-center">
+                    <h1 class="text-4xl md:text-5xl font-bold">Join the DIT Python Community</h1>
+                    <button class="btn btn-ghost mt-4 rounded-full" onclick="register.showModal()">Join Us Today</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+   <section class="container mx-auto py-12 px-4">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+            <h2 class="text-3xl font-bold">{{ page.title }}</h2>
+            <p class="text-gray-600">{{ page.intro|richtext }}</p>
+            </div>
+            <div class="flex justify-center">
+                <div class="space-x-4">
+                    <button popovertarget="cally-popover1" class="btn btn-ghost" id="cally1" style="anchor-name:--cally1">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10m-9 4h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </button>
+                    <div popover id="cally-popover1" class="dropdown bg-base-100 rounded-box shadow-lg" style="position-anchor:--cally1; transform: translate(-50%, -50%); left: 50%; top: 30%; position: fixed;">
+                      <calendar-date class="cally" onchange="document.getElementById('cally1').innerText = this.value">
+                        <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
+                        <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
+                        <calendar-month></calendar-month>
+                      </calendar-date>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Events -->
+             {% for event in page.get_children %}
+            <div class="card bg-base-100 shadow-sm">
+                <figure>
+                    <div class="bg-gray-200 flex items-center justify-center w-full">
+                        {% image event.specific.image fill-600x500 class="object-cover rounded-lg" alt="{{ event.title }}" %}
+                    </div>
+                        
+                </figure>
+                <div class="card-body">
+                    <p class="text-gray-500 text-sm">{{ event.specific.date }}</p>
+                    <h3 class="card-title">{{ event.specific.title|upper }}</h3>
+                    <p class="text-gray-600">{{ event.specific.intro|richtext }}</p>
+                    <div class="card-actions justify-left">
+                        <a href="{% pageurl event %}" class="btn btn-ghost rounded-full">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+       
+        </div>
+        <!-- Pagination -->
+        <div class="flex justify-center mt-8">
+            <div class="btn-group">
+            <button class="btn btn-circle">←</button>
+            <button class="btn btn-circle">1</button>
+            <button class="btn btn-circle">2</button>
+            <button class="btn btn-circle">3</button>
+         
+            <button class="btn btn-circle">→</button>
+            </div>
+        </div>
+        <!-- Dialog -->
+    {% include "website/register.html" %}
+    </section>
+    
+{% endblock content %}

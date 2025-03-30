@@ -1,0 +1,58 @@
+{% load static %}
+<footer class="footer bg-base-100 py-6">
+  <div class="container mx-auto px-4">
+    <!-- Mobile-first: Stack all sections vertically by default -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-4 md:gap-8">
+      <!-- Footer Links -->
+      <div class="text-center md:text-left">
+        <h4 class="font-semibold mb-2 text-lg">Disclaimer</h4>
+        <p class="text-sm">PyCon University follows either PyCon Conferences organized by the Python User Group.</p>
+      </div>
+      <div class="text-center md:text-left">
+        <h4 class="font-semibold mb-2 text-lg">Our Community</h4>
+        <p class="text-sm">
+          <a href="#" class="hover:pathtext-blue-500 hover:underline">Home</a> |
+          {% comment %} <a href="{% url 'events' %}" class="text-blue-500 hover:underline">Events</a> | {% endcomment %}
+          <a href="#" class="hover:text-blue-500 hover:underline">Code of Conduct</a>
+        </p>
+      </div>
+      <div class="text-center md:text-left">
+        <h4 class="font-semibold mb-2 text-lg">Other Uni Chapters</h4>
+        <p class="text-sm">
+          <a href="https://arusha-chapter.example.com" class="hover:text-blue-500 hover:underline">Arusha Chapter</a> |
+          <a href="https://iaa-chapter.example.com" class="hover:text-blue-500 hover:underline">Mzumbe Chapter</a> |
+          <a href="https://suza-chapter.example.com" class="hover:text-blue-500 hover:underline">SUZA Chapter</a>
+        </p>
+      </div>
+      <div class="text-center md:text-left">
+        <h4 class="font-semibold mb-2 text-lg">Follow Us</h4>
+        <div class="flex justify-center md:justify-start space-x-4">
+          <a href="#"
+             class="bg-gray-200 h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
+            <img src="{% static 'images/social/github.png' %}"
+                 alt="Github Icon"
+                 class="h-4 w-4" />
+          </a>
+          <a href="#"
+             class="bg-gray-200 h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
+            <img src="{% static 'images/social/instagram.png' %}"
+                 alt="Instagram Icon"
+                 class="h-4 w-4" />
+          </a>
+          <a href="#"
+             class="bg-gray-200 h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
+            <img src="{% static 'images/social/twitter.png' %}"
+                 alt="Twitter Icon"
+                 class="h-4 w-4" />
+          </a>
+          <a href="#"
+             class="bg-gray-200 h-8 w-8 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
+            <img src="{% static 'images/social/linkedin.png' %}"
+                 alt="LinkedIn Icon"
+                 class="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

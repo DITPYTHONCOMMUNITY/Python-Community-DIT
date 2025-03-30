@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <!-- Navbar (assuming it's in base.html) -->
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-3xl mx-auto">
+            <!-- Article Header -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold mb-4">{{ page.title }}</h1>
+                <div class="flex items-center gap-4 text-base-content/70">
+                    <span>{{ page.date|date:"F d, Y" }}</span>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            {% if page.image %}
+                <div class="mb-8">
+                    {% image page.image fill-1200x600 class="w-full h-96 object-cover rounded-lg" alt="{{ page.title }}" %}
+                </div>
+            {% endif %}
+
+            <!-- Article Content -->
+            <div class="prose max-w-none">
+                {{ page.description|richtext }}
+            </div>
+
+       
+        </div>
+    </div>
+
+    <!-- Footer (assuming it's in base.html) -->
+{% endblock %}
