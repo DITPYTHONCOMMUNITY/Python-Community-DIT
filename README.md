@@ -1,6 +1,6 @@
-# DIT Python Community - PyCon University
+# DIT Python Community
 
-This is a Django project template for a university website, designed for the DIT Python Community's PyCon University event. It features a responsive design using Tailwind CSS and DaisyUI.
+This is a Django project template for a university website, designed for the DIT Python Community. It features a responsive design using Tailwind CSS and DaisyUI. Also uses Wagtail CMS for content management.
 
 Before you begin, ensure you have the following installed:
 
@@ -13,7 +13,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/LISACORNEL/Python-Community-DIT.git
+git clone https://github.com/DITPYTHONCOMMUNITY/Python-Community-DIT.git
 cd Python-Community-DIT
 ```
 
@@ -76,4 +76,4 @@ Thank you for contributing to the DIT Python Community project!
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
