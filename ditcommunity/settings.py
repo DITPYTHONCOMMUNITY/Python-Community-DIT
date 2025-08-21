@@ -55,7 +55,9 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NPM_BIN_PATH = os.getenv("NPM_BIN_PATH")
+# NPM paths from environment with fallbacks
+NPM_BIN_PATH = os.getenv("NPM_BIN_PATH", "/usr/bin/npm")
+TAILWIND_NPM_BIN_PATH = NPM_BIN_PATH
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
