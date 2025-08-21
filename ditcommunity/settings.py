@@ -17,7 +17,8 @@ SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-change-this-in-production-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+# Fix ALLOWED_HOSTS with fallback
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "pythonditcommunity.deploy.tz,localhost,127.0.0.1").split(",")
 
 
 # Application definition
@@ -153,7 +154,7 @@ else:
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 WAGTAIL_SITE_NAME = "DIT Python Community"
 
-# Wagtail admin URL with fallback for production
+# Wagtail admin URL with updated domain
 if DEBUG:
     WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 else:
