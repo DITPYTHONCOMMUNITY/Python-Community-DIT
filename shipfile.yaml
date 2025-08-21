@@ -3,5 +3,5 @@ script: |
   python manage.py makemigrations
   python manage.py migrate
   python manage.py collectstatic --noinput
-  python manage.py tailwind build
+  echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'changeme123') if not User.objects.filter(username='admin').exists() else None" | python manage.py shell
 run: gunicorn ditcommunity.wsgi:application --bind 0.0.0.0:8000
