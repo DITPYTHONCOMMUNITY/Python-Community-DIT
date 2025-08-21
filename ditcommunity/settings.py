@@ -157,7 +157,7 @@ WAGTAIL_SITE_NAME = "DIT Python Community"
 if DEBUG:
     WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 else:
-    WAGTAILADMIN_BASE_URL = os.getenv("WAGTAILADMIN_BASE_URL", "https://ditpythoncommunity.deploy.tz")
+    WAGTAILADMIN_BASE_URL = os.getenv("WAGTAILADMIN_BASE_URL", "https://pythonditcommunity.deploy.tz")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
