@@ -12,12 +12,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-change-this-in-production-very-long-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
 
 # Application definition
@@ -55,8 +55,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NPM_BIN_PATH = "/home/lisa/.nvm/versions/node/v18.20.8/bin/npm"
-TAILWIND_NPM_BIN_PATH = "/home/lisa/.nvm/versions/node/v18.20.8/bin/npm"
+NPM_BIN_PATH = os.getenv("NPM_BIN_PATH")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -141,17 +140,22 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]  # Directory for static files
 STATIC_ROOT = BASE_DIR / "staticfiles"  # Directory for static files in production
 
-# set media files for development
+# Media files with fallbacks for production
 if DEBUG:
     MEDIA_URL = "/media/"
     MEDIA_ROOT = BASE_DIR / "media"  # Directory for uploaded media files
 else:
-    MEDIA_URL = os.getenv("PRODUCTION_MEDIA_URL")
-    MEDIA_ROOT = os.getenv("PRODUCTION_MEDIA_ROOT")
+    MEDIA_URL = os.getenv("PRODUCTION_MEDIA_URL", "/media/")
+    MEDIA_ROOT = os.getenv("PRODUCTION_MEDIA_ROOT", str(BASE_DIR / "media"))
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 WAGTAIL_SITE_NAME = "DIT Python Community"
-WAGTAILADMIN_BASE_URL = "http://localhost:8000"
+
+# Wagtail admin URL with fallback for production
+if DEBUG:
+    WAGTAILADMIN_BASE_URL = "http://localhost:8000"
+else:
+    WAGTAILADMIN_BASE_URL = os.getenv("WAGTAILADMIN_BASE_URL", "https://ditpythoncommunity.deploy.tz")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
