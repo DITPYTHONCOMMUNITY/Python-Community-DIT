@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 
 # Application definition
@@ -55,7 +55,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NPM_BIN_PATH = os.getenv("NPM_BIN_PATH")
+NPM_BIN_PATH = "/home/lisa/.nvm/versions/node/v18.20.8/bin/npm"
+TAILWIND_NPM_BIN_PATH = "/home/lisa/.nvm/versions/node/v18.20.8/bin/npm"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
